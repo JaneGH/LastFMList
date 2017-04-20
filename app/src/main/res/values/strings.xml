@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">LastFMListApp</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="large">large</string>
+    <string name="listeners">listeners</string>
+    <string name="name">name</string>
+    <string name="country">Country:</string>
+    <string name="spinner_title">City:</string>
+    <string name="popular_artists">Popular artists</string>
+
+    <string-array name="country_array">
+        <item>Spain</item>
+        <item>Ukraine</item>
+        <item>France</item>
+    </string-array>
+
+</resources>

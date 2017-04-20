@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/padding_left"
+    android:paddingStart="@dimen/padding_left"
+    android:paddingRight="@dimen/padding_right"
+    android:paddingEnd="@dimen/padding_right"
+    android:paddingTop="@dimen/padding_top_item"
+    android:paddingBottom="@dimen/padding_top_item">
+
+    <ImageView
+        android:id="@+id/iv_artist"
+        android:layout_width="@dimen/image_list_width"
+        android:layout_height="@dimen/image_list_height"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="@dimen/margin_top"/>
+
+    <TextView
+        android:id="@+id/tv_name_artist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/name"
+        android:layout_toRightOf="@+id/iv_artist"
+        android:layout_toEndOf="@+id/iv_artist"
+        android:layout_below="@+id/iv_artist"
+        android:layout_alignParentTop="true" />
+
+
+    <TextView
+        android:id="@+id/tv_listeners_artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_below="@+id/tv_name_artist"
+        android:layout_toRightOf="@+id/iv_artist"
+        android:layout_toEndOf="@+id/iv_artist"
+        android:paddingTop="@dimen/padding_top" />
+</RelativeLayout>
