@@ -190,7 +190,7 @@ public class ArtistFragment extends BaseFragment implements OnItemSelectedListen
 
     @Override
     public void notifyPictureChanged() {
-        if(mArtistListAdapter!=null) {
+        if(mArtistListAdapter!=null&& getActivity()!=null) {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {

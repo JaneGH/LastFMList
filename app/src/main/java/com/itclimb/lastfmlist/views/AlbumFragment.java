@@ -153,7 +153,7 @@ public class AlbumFragment extends BaseFragment implements IAlbumFragmentView {
 
     @Override
     public void notifyPictureChanged() {
-        if(mAlbumListAdapter!=null) {
+        if(mAlbumListAdapter!=null&& getActivity()!=null) {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
