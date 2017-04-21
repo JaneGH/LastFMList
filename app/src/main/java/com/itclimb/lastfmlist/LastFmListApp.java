@@ -6,12 +6,6 @@ import com.itclimb.lastfmlist.data.DataManager;
 import com.itclimb.lastfmlist.injection.components.DaggerLastFmListAppComponent;
 import com.itclimb.lastfmlist.injection.components.LastFmListAppComponent;
 
-import rx.schedulers.Schedulers;
-
-/**
- * Created by MyComp on 18.04.2017.
- */
-
 public class LastFmListApp extends Application {
 
     protected  LastFmListAppComponent appComponent;
@@ -26,7 +20,8 @@ public class LastFmListApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        mDataManager = new DataManager(this, Schedulers.io());
+
+        mDataManager = new DataManager(this);
         mMLastFmListApp = this;
         buildGraphAndInject();
     }

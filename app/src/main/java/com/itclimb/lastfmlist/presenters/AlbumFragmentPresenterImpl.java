@@ -9,6 +9,7 @@ import com.itclimb.lastfmlist.data.DataManager;
 import com.itclimb.lastfmlist.data.model.AlbumItem;
 import com.itclimb.lastfmlist.data.model.Tags;
 import com.itclimb.lastfmlist.network.LastFmRemoteService;
+import com.itclimb.lastfmlist.network.LastFmSpiceService;
 import com.itclimb.lastfmlist.views.IAlbumFragmentView;
 import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.persistence.DurationInMillis;
@@ -88,6 +89,7 @@ public class AlbumFragmentPresenterImpl implements IAlbumFragmentPresenter {
 
         private List<AlbumItem> getListFromJson(String result) {
             List<AlbumItem> albumItemList = new ArrayList<>();
+            if (result==null) return albumItemList;
             try {
                 JSONObject jsonObject = new JSONObject(result);
                 JSONObject topAlbums = jsonObject.getJSONObject(Tags.TAG_TOP_ALBUMS);
@@ -96,6 +98,9 @@ public class AlbumFragmentPresenterImpl implements IAlbumFragmentPresenter {
                     JSONObject jsonItem = album.getJSONObject(i);
                     AlbumItem albumItem = new AlbumItem();
                     albumItem.title = jsonItem.getString(Tags.TAG_NAME);
+                    if (albumItem.title.equals(LastFmSpiceService.EMPTY_ALBUM)){
+                        continue;
+                    }
                     albumItem.playCount = jsonItem.getString(Tags.TAG_PLAY_COUNT);
                     albumItem.artist = mNameArtist;
                     albumItem.imageUrl = FileUtils.getFileName(albumItem.artist + "_" + albumItem.title);

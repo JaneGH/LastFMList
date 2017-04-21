@@ -17,50 +17,14 @@ import rx.Observable;
 import rx.Scheduler;
 import rx.functions.Func1;
 
-/**
- * Created by MyComp on 19.04.2017.
- */
 @Singleton
-//public class DataManager {
-//    private final LastFmRemoteService mLastFmRemoteService;
-//    private final Context mContext;
-//    private final DatabaseHelper mDatabaseHelper;
-//
-//    @Inject
-//    public DataManager(@ApplicationContext Context context, LastFmRemoteService mLastFmRemoteService, DatabaseHelper mDatabaseHelper) {
-//        this.mContext = context;
-//        this.mLastFmRemoteService = mLastFmRemoteService;
-//        this.mDatabaseHelper = mDatabaseHelper;
-//    }
-//
-//    public Observable<ArtistItem> syncArtists() {
-//        final long requestStarted = System.currentTimeMillis();
-//        return mLastFmRemoteService.getTopArtists()
-//                .concatMap(new Func1<List<ArtistItem>, Observable<ArtistItem>>() {
-//                    @Override
-//                    public Observable<ArtistItem> call(List<ArtistItem> artists) {
-//                        String url = LastFmSpiceService.ENDPOINT + "?method=geo.gettopartists&country=spain&api_key="+LastFmSpiceService.API_KEY+"&format=json&limit=30";
-//                        return mDatabaseHelper.setArtists(artists);
-//                    }
-//                });
-//    }
-//}
 public class DataManager {
 
     private DatabaseHelper mDatabaseHelper;
-    private Scheduler mScheduler;
 
-    public DataManager(Context context, Scheduler scheduler) {
+    @Inject
+    public DataManager(@ApplicationContext Context context) {
         mDatabaseHelper = new DatabaseHelper(context);
-        mScheduler = scheduler;
-    }
-
-    public void setScheduler(Scheduler scheduler) {
-        mScheduler = scheduler;
-    }
-
-    public Scheduler getScheduler() {
-        return mScheduler;
     }
 
     public void saveArtists(List<ArtistItem> artists, String country) {

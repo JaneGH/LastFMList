@@ -11,7 +11,7 @@ public class LastFmSpiceService extends SpiceService {
 
     public static final String ENDPOINT = "http://ws.audioscrobbler.com/2.0/";
     public static final String API_KEY = "e81f61890b7ff8633ca024d0faa449e7";
-
+    public static final String EMPTY_ALBUM = "(null)";
     public static String getURL(String country) {
         return ENDPOINT + "?method=geo.gettopartists&country="+country+"&api_key="+API_KEY+"&format=json";
     }

@@ -113,12 +113,14 @@ public class ArtistFragmentPresenterImpl implements IArtistFragmentPresenter {
         public void onRequestSuccess(String result) {
             view.hideProgressDialog();
             List<ArtistItem> artists = getListFromJson(result);
+            if (result==null) return;
             mDataManager.saveArtists(artists, mCountry);
             view.setArtistListAdapter(mDataManager.getArtists(mCountry), artists.size());
         }
 
         private List<ArtistItem> getListFromJson(String jsonString) {
             List<ArtistItem> itemTalkList = new ArrayList<>();
+            if (jsonString==null) return itemTalkList;
             try {
                 JSONObject jsonObject = new JSONObject(jsonString);
                 JSONObject artists = jsonObject.getJSONObject(Tags.TAG_TOP_ARTISTS);

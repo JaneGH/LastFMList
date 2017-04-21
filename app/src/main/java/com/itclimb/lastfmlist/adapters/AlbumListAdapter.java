@@ -27,6 +27,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.itclimb.lastfmlist.LastFmListApp;
 import com.itclimb.lastfmlist.R;
 import com.itclimb.lastfmlist.Utils.FileUtils;
@@ -106,6 +107,8 @@ public class AlbumListAdapter extends BaseAdapter {
         Bitmap imageAlbum = FileUtils.loadBitmap(LastFmListApp.get(), nameFile);
         if (imageAlbum!=null) {
             holder.imageList.setImageBitmap(imageAlbum);
+        }else {
+            Glide.with(mActivity).load(R.drawable.no_album_cover).fitCenter().into(holder.imageList);
         }
         return view;
     }

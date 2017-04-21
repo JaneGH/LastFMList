@@ -18,6 +18,7 @@ package com.itclimb.lastfmlist.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.itclimb.lastfmlist.LastFmListApp;
 import com.itclimb.lastfmlist.R;
 import com.itclimb.lastfmlist.Utils.FileUtils;
@@ -102,7 +104,12 @@ public class ArtistListAdapter extends BaseAdapter {
         holder.nameText.setText(itemTalk.name);
         holder.listenersText.setText(String.format("%s", itemTalk.listeners));
         String nameFile = FileUtils.getFileName(itemTalk.name);
-        holder.imageList.setImageBitmap(FileUtils.loadBitmap(LastFmListApp.get(), nameFile));
+        Bitmap imageAlbum = FileUtils.loadBitmap(LastFmListApp.get(), nameFile);
+        if (imageAlbum!=null) {
+            holder.imageList.setImageBitmap(imageAlbum);
+        }else {
+            Glide.with(mActivity).load(R.drawable.no_album_cover).fitCenter().into(holder.imageList);
+        }
         return view;
     }
 
